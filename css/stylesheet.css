@@ -10,9 +10,9 @@
 }
 
 @font-face {
-    font-family: 'Digital-7';
-    src: url('fonts/Digital-7.woff2') format('woff2'),
-        url('fonts/Digital-7.woff') format('woff');
+    font-family: 'digital-7';
+    src: url('fonts/digital-7.woff2') format('woff2'),
+        url('fonts/digital-7.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

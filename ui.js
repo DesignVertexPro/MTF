@@ -31,6 +31,12 @@ lib.ssMetadata = [];
 p.nominalBounds = new cjs.Rectangle(0,0,1280,720);
 
 
+(lib.Bitmap1 = function() {
+	this.initialize(img.Bitmap1);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,400,151);
+
+
 (lib.Bitmap10 = function() {
 	this.initialize(img.Bitmap10);
 }).prototype = p = new cjs.Bitmap();
@@ -178,29 +184,6 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.mcTxt, new cjs.Rectangle(-7,-8.5,14,17), null);
-
-
-(lib.mcInsBase = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// Layer_1
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f("rgba(25,16,90,0.698)").s().p("EgqdAE5IAApxMBU7AAAIAAJxg");
-	this.shape.setTransform(271.75,31.325);
-
-	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.mcInsBase, new cjs.Rectangle(0,0,543.5,62.7), null);
 
 
 (lib.mcImage = function(mode,startPosition,loop,reversed) {
@@ -529,13 +512,6 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.mcTT).wait(1));
 
-	// Layer_3
-	this.mcTxtBase = new lib.mcInsBase();
-	this.mcTxtBase.name = "mcTxtBase";
-	this.mcTxtBase.setTransform(343.8,31.3,1,1,0,0,0,343.8,31.3);
-
-	this.timeline.addTween(cjs.Tween.get(this.mcTxtBase).wait(1));
-
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.mcInstruction, new cjs.Rectangle(0,0,543.5,62.7), null);
@@ -840,24 +816,15 @@ if (reversed == null) { reversed = false; }
 	// Layer_2
 	this.mcTT = new lib.mcTxt();
 	this.mcTT.name = "mcTT";
-	this.mcTT.setTransform(94.2,39.6);
+	this.mcTT.setTransform(100,39.6);
 
 	this.timeline.addTween(cjs.Tween.get(this.mcTT).wait(1));
 
 	// Layer_1
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("AtNF5QibAAAAibIAAm7QAAibCbAAIaZAAQCdAAAACbIAAG7QAACbidAAgAu7i9IAAF7QAACECTAAIZOAAQCWAAAAiEIAAl7QAAiEiWAAI5OAAQiTAAAACEg");
-	this.shape.setTransform(100.075,37.675);
+	this.instance = new lib.Bitmap1();
+	this.instance.setTransform(0,0,0.5,0.5);
 
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#CC48CD").s().p("AsLEiQiNAAAAh3IAAlUQAAh4CNAAIYUAAQCQAAAAB4IAAFUQAAB3iQAAg");
-	this.shape_1.setTransform(100.025,37.65);
-
-	this.shape_2 = new cjs.Shape();
-	this.shape_2.graphics.f("#662C90").s().p("AsoFCQiTAAAAiEIAAl7QAAiECTAAIZPAAQCVAAAACEIAAF7QAACEiVAAgAuYiqIAAFVQAAB3CNAAIYUAAQCQAAgBh3IAAlVQABh3iQAAI4UAAQiNAAAAB3g");
-	this.shape_2.setTransform(100.05,37.675);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_2},{t:this.shape_1},{t:this.shape}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
@@ -990,7 +957,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-693.2,15.6,1917.4,811);
+p.nominalBounds = new cjs.Rectangle(-654.3,15.6,1878.5,811);
 
 
 // stage content:
@@ -1042,7 +1009,7 @@ if (reversed == null) { reversed = false; }
 		
 		// Add this inside your CreateJS setup or init function
 		this.createDigitalClock = function () {
-			const font = new FontFace("Digital-7", "url('css/fonts/digital-7.woff2')");
+			const font = new FontFace("digital-7", "url('css/fonts/digital-7.woff2')");
 		
 			font.load().then((loadedFont) => {
 				document.fonts.add(loadedFont);
@@ -1050,7 +1017,7 @@ if (reversed == null) { reversed = false; }
 		
 				// Main clock container
 				const mcClock = new createjs.Container();
-				stage.addChild(mcClock);
+				this.addChild(mcClock);
 		
 				// Inner container for text
 				mcClock.mcTT = new createjs.Container();
@@ -1143,7 +1110,7 @@ if (reversed == null) { reversed = false; }
 		    this.isMuted = !this.isMuted;
 		
 		    bgMusic.muted = this.isMuted;
-		    //this.audio.muted = this.isMuted; // optional: if you want to mute other audio too
+		   // this.audio.muted = this.isMuted; // optional: if you want to mute other audio too
 		
 		    // Change button frame based on mute state
 		    if (this.isMuted) {
@@ -1317,7 +1284,7 @@ if (reversed == null) { reversed = false; }
 		
 				let txtMC = this.mcGameScreen["mcRight_Txt" + (k + 1)].mcTT;
 				//this.fGenerateCreateJSText = function(mc, strText, xx, yy, nLineHeight, nLineWidth, strFont, strColor, strAlign)
-				//loadFont("Baloo Bhai 2", () => {
+				// Rect Text Edit
 					this.fGenerateCreateJSText(txtMC,text,0,0,200,300,"30px Roboto", "#FFFFFF",	"center");
 				//});
 			}
@@ -1426,6 +1393,7 @@ if (reversed == null) { reversed = false; }
 			//this.mcGameScreen.mcLeft_img1.audioBtn.btn.cursor = "pointer"
 		
 			this.mcInsText = this.mcGameScreen.mcInstruction.mcTT;
+			// mcInsText Text Edit
 			this.fGenerateCreateJSText(this.mcInsText,insText,0,0,200,500,"30px Roboto", "#FFFF00",	"left");
 		
 			this.mcGameScreen.btnSubmit.hitArea = this.mcGameScreen.btnSubmit.btn;
@@ -1454,6 +1422,7 @@ if (reversed == null) { reversed = false; }
 			let pt = item.btn.localToGlobal(0, 0); // ⭐ START FROM BUTTON
 		
 			this.dragLine = new createjs.Shape();
+			//Line color Edit
 			this.dragLine.graphics.setStrokeStyle(6, "round").beginStroke("#ffffff").moveTo(pt.x, pt.y);
 			this.mcGameScreen.addChild(this.dragLine);
 		
@@ -1504,6 +1473,7 @@ if (reversed == null) { reversed = false; }
 			let p2 = item2.btn.localToGlobal(0, 0);
 		
 			let line = new createjs.Shape();
+			//Line color Edit
 			line.graphics.setStrokeStyle(6, "round").beginStroke("#ffffff").moveTo(p1.x, p1.y).lineTo(p2.x, p2.y);
 			this.mcGameScreen.addChild(line);
 		
@@ -1523,8 +1493,8 @@ if (reversed == null) { reversed = false; }
 			});
 		
 			// Freeze interaction
-			item1.mouseEnabled = false;
-			item2.mouseEnabled = false;
+			item1.btn.mouseEnabled = false;
+			item2.btn.mouseEnabled = false;
 		
 			// TODO: Check for correctness by ID
 			console.log("item1.id =" + item1.id +": item2.id = " + item2.id);
@@ -1564,6 +1534,7 @@ if (reversed == null) { reversed = false; }
 					// ✅ Correct Match — Lock it
 					line.graphics.clear()
 						.setStrokeStyle(6, "round")
+						//Green Line color Edit 
 						.beginStroke("#00CC00")
 						.moveTo(itemA.btn.localToGlobal(0, 0).x, itemA.btn.localToGlobal(0, 0).y)
 						.lineTo(itemB.btn.localToGlobal(0, 0).x, itemB.btn.localToGlobal(0, 0).y);
@@ -1572,8 +1543,10 @@ if (reversed == null) { reversed = false; }
 					line.isLocked = true; // 🔐 Lock correct line
 					itemA.isMatched = true;
 					itemB.isMatched = true;
-					itemA.mouseEnabled = false;
-					itemB.mouseEnabled = false;
+					itemA.btn.mouseEnabled = false;
+					itemB.btn.mouseEnabled = false;
+					itemA.btnAudio.mouseEnabled = false;
+					itemB.btnAudio.mouseEnabled = false;
 		
 					correctMatches.push(match);
 				} else {
@@ -1583,8 +1556,8 @@ if (reversed == null) { reversed = false; }
 					}
 					itemA.isMatched = false;
 					itemB.isMatched = false;
-					itemA.mouseEnabled = true;
-					itemB.mouseEnabled = true;
+					itemA.btn.mouseEnabled = true;
+					itemB.btn.mouseEnabled = true;
 				}
 			}
 		
@@ -1631,8 +1604,8 @@ if (reversed == null) { reversed = false; }
 					// 🧹 Remove the rest (including post-submit new lines)
 					p.itemA.isMatched = false;
 					p.itemB.isMatched = false;
-					p.itemA.mouseEnabled = true;
-					p.itemB.mouseEnabled = true;
+					p.itemA.btn.mouseEnabled = true;
+					p.itemB.btn.mouseEnabled = true;
 					this.mcGameScreen.removeChild(p.line);
 				}
 			}
@@ -1661,7 +1634,8 @@ if (reversed == null) { reversed = false; }
 			}
 		};
 		this.initFunction();
-		stage.setChildIndex(this.mcLogo, stage.numChildren - 1);
+		stage.addChild(this.mcLogo); 
+		//stage.setChildIndex(this.mcLogo, stage.numChildren - 1);
 	}
 
 	// actions tween:
@@ -1670,7 +1644,7 @@ if (reversed == null) { reversed = false; }
 	// logo
 	this.mcLogo = new lib.ncLogo();
 	this.mcLogo.name = "mcLogo";
-	this.mcLogo.setTransform(1163.35,32.5);
+	this.mcLogo.setTransform(1178.85,29.35,0.9,0.9);
 
 	this.timeline.addTween(cjs.Tween.get(this.mcLogo).wait(1));
 
@@ -1708,18 +1682,19 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/BG.jpg?1746626949794", id:"BG"},
-		{src:"images/Bitmap10.png?1746626949794", id:"Bitmap10"},
-		{src:"images/Bitmap12.png?1746626949794", id:"Bitmap12"},
-		{src:"images/Bitmap15.png?1746626949794", id:"Bitmap15"},
-		{src:"images/Bitmap16.png?1746626949794", id:"Bitmap16"},
-		{src:"images/Bitmap2.png?1746626949794", id:"Bitmap2"},
-		{src:"images/Bitmap3.png?1746626949794", id:"Bitmap3"},
-		{src:"images/Bitmap6.png?1746626949794", id:"Bitmap6"},
-		{src:"images/Bitmap7.png?1746626949794", id:"Bitmap7"},
-		{src:"images/Bitmap8.png?1746626949794", id:"Bitmap8"},
-		{src:"images/logo1.png?1746626949794", id:"logo1"},
-		{src:"images/start_bg.png?1746626949794", id:"start_bg"}
+		{src:"images/BG.jpg?1749123528294", id:"BG"},
+		{src:"images/Bitmap1.png?1749123528294", id:"Bitmap1"},
+		{src:"images/Bitmap10.png?1749123528294", id:"Bitmap10"},
+		{src:"images/Bitmap12.png?1749123528294", id:"Bitmap12"},
+		{src:"images/Bitmap15.png?1749123528294", id:"Bitmap15"},
+		{src:"images/Bitmap16.png?1749123528294", id:"Bitmap16"},
+		{src:"images/Bitmap2.png?1749123528294", id:"Bitmap2"},
+		{src:"images/Bitmap3.png?1749123528294", id:"Bitmap3"},
+		{src:"images/Bitmap6.png?1749123528294", id:"Bitmap6"},
+		{src:"images/Bitmap7.png?1749123528294", id:"Bitmap7"},
+		{src:"images/Bitmap8.png?1749123528294", id:"Bitmap8"},
+		{src:"images/logo1.png?1749123528294", id:"logo1"},
+		{src:"images/start_bg.png?1749123528294", id:"start_bg"}
 	],
 	preloads: []
 };
